@@ -39,7 +39,38 @@ public class Empleado {
 	 */
 	public double sueldoBruto() {
 		// TODO
-		return 0;
+		
+		double sueldoBase;
+		double complemento = 0;
+		int fechaActual = LocalDate.now().getYear();
+		int antiguedad = fechaActual - this.fechaContratacion.getYear();
+		double sueldoBruto = 0;
+		
+		switch (this.categoria) { 
+			case ENCARGADO:
+		    	sueldoBase = 2000;
+		    	break;
+		    case VENDEDOR:
+		    	sueldoBase = 1500;
+		    	break;
+		    case AUXILIAR:
+		    	sueldoBase = 1000;
+		    	break;
+		    default:
+		    	sueldoBase = 0;
+		}
+		
+		if (antiguedad > 20) {
+			complemento = 200;
+		} else if (antiguedad > 10) {
+			complemento = 100;
+		} else if (antiguedad > 5) {
+			complemento = 50;
+		}
+		
+		sueldoBruto = sueldoBase + complemento;
+		
+		return sueldoBruto;
 	}
 	
 	/** 
