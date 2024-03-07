@@ -1,7 +1,7 @@
 package es.unican.is2.gui;
 
 
-
+import es.unican.is2.ccommon.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;

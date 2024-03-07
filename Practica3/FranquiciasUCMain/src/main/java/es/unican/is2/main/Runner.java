@@ -1,6 +1,9 @@
 package es.unican.is2.main;
 
-
+import es.unican.is2.business.*;
+import es.unican.is2.dao.EmpleadosDAO;
+import es.unican.is2.dao.TiendasDAO;
+import es.unican.is2.gui.VistaGerente;
 
 /**
  * Clase principal que construye la aplicaci�n de tres capas y lanza su ejecuci�n

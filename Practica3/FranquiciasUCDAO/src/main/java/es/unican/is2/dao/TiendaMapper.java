@@ -1,6 +1,6 @@
 package es.unican.is2.dao;
 
-
+import es.unican.is2.ccommon.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
