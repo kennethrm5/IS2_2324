@@ -6,7 +6,7 @@ import es.unican.is2.dao.TiendasDAO;
 
 public class GestionEmpleados implements IGestionEmpleados {
 
-	private ITiendasDAO tiendas = new TiendasDAO();
+	private TiendasDAO tiendas = new TiendasDAO();
 	private HashMap<String, Tienda> empleados = new HashMap<>();
 	
 	@Override
