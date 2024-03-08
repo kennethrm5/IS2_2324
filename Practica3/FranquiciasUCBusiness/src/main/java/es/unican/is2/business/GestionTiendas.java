@@ -9,8 +9,6 @@ public class GestionTiendas implements IGestionTiendas {
 	
 	@Override
 	public Tienda nuevaTienda(Tienda t) throws DataAccessException {
-		// TODO Auto-generated method stub
-		
 		if (t != null) {
 			tiendas.put(t.getNombre(), t);
 		} else {
@@ -22,8 +20,6 @@ public class GestionTiendas implements IGestionTiendas {
 
 	@Override
 	public Tienda eliminarTienda(String nombre) throws OperacionNoValidaException, DataAccessException {
-		// TODO Auto-generated method stub
-		
 		if (tiendas.containsKey(nombre)) {
 			throw new OperacionNoValidaException("Tienda ya existe");
 		}
@@ -45,9 +41,7 @@ public class GestionTiendas implements IGestionTiendas {
 	}
 
 	@Override
-	public Tienda tienda(String nombre) throws DataAccessException {
-		// TODO Auto-generated method stub
-		
+	public Tienda tienda(String nombre) throws DataAccessException {		
 		Tienda n = null;
 		
 		if (nombre != null) {

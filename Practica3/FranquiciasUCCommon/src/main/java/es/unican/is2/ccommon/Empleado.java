@@ -38,8 +38,6 @@ public class Empleado {
 	 * Retorna el sueldo bruto del empleado
 	 */
 	public double sueldoBruto() {
-		// TODO
-		
 		double sueldoBase;
 		double complemento = 0;
 		int fechaActual = LocalDate.now().getYear();
