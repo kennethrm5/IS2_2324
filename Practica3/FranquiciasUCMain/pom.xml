@@ -58,7 +58,7 @@
 					
 					<archive>
 						<manifest>
-							<mainClass>es.unican.is2.</mainClass>
+							<mainClass>es.unican.is2.main.Runner</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
