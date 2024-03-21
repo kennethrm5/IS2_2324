@@ -30,6 +30,23 @@ public class Empleado {
 		this.DNI=DNI;
 		this.categoria=categoria;
 		this.fechaContratacion=fechaContratacion;
+
+		if (DNI == null || DNI.isEmpty()) {
+			throw new OperacionNoValidaException("DNI no puede ser nulo o vacio");
+		}
+
+		if (nombre == null || nombre.isEmpty()) {
+			throw new OperacionNoValidaException("Nombre no puede ser nulo o vacio");
+		}
+
+		if (categoria == null) {
+			throw new OperacionNoValidaException("Categoria no puede ser nulo");
+		}
+
+		if (fechaContratacion == null) {
+			throw new OperacionNoValidaException("Fecha de contratacion no puede ser nulo");
+		}
+
 	}
 	
 	/**

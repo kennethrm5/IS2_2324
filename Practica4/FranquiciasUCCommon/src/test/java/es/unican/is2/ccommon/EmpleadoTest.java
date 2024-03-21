@@ -2,6 +2,7 @@ package es.unican.is2.ccommon;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.beans.Transient;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
@@ -77,5 +78,34 @@ public class EmpleadoTest {
 		sut.setBaja(false);
 		sut.setFechaContratacion(LocalDate.of(2000, 1, 1));
 		assertEquals(2200, sut.sueldoBruto());
+
+		// Casos de prueba no válidos
+		// No podemos hacerlos porque necesitamos que el sut sea final, pero no podemos hacerlo porque sí necesitamos modificarlo
+	}
+
+	@Test
+	public void testDarDeBaja() {
+		// Casos de prueba válidos
+		Empleado sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.of(2024, 3, 14));
+		sut.setBaja(true);
+		sut.darDeBaja();
+		assertEquals(true, sut.getBaja());
+
+		sut.setBaja(false);
+		sut.darDeBaja();
+		assertEquals(true, sut.getBaja());
+	}
+
+	@Test
+	public void testDarDeAlta() {
+		// Casos de prueba válidos
+		Empleado sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.of(2024, 3, 14));
+		sut.setBaja(true);
+		sut.darDeAlta();
+		assertEquals(false, sut.getBaja());
+
+		sut.setBaja(false);
+		sut.darDeAlta();
+		assertEquals(false, sut.getBaja());
 	}
 }
