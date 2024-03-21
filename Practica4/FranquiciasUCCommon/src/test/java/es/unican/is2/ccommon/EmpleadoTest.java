@@ -57,7 +57,7 @@ public class EmpleadoTest {
 	}
 	
 	@Test
-	public void testSueldo() {
+	public void testSueldoBruto() {
 		// Casos de prueba válidos
 		Empleado sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.of(2024, 3, 14));
 		sut.setBaja(true);
