@@ -24,8 +24,9 @@ public class Empleado {
 	 * @param nombre
 	 * @param categoria
 	 * @param fechaContratacion
+	 * @throws OperacionNoValidaException 
 	 */
-	public Empleado(String DNI, String nombre, Categoria categoria, LocalDate fechaContratacion) {
+	public Empleado(String DNI, String nombre, Categoria categoria, LocalDate fechaContratacion) throws OperacionNoValidaException {
 		this.nombre = nombre;
 		this.DNI=DNI;
 		this.categoria=categoria;
@@ -43,8 +44,8 @@ public class Empleado {
 			throw new OperacionNoValidaException("Categoria no puede ser nulo");
 		}
 
-		if (fechaContratacion == null) {
-			throw new OperacionNoValidaException("Fecha de contratacion no puede ser nulo");
+		if (fechaContratacion == null || fechaContratacion.isAfter(LocalDate.now())) {
+			throw new OperacionNoValidaException("Fecha de contratacion no puede ser nula o posterior a la actual");
 		}
 
 	}
@@ -104,6 +105,7 @@ public class Empleado {
 	/**
 	 * Retorna el dni del vendedor
 	 * @return id
+	 * @throws OperacionNoValidaException 
 	 */
 	public String getDNI() {
 		return DNI;
@@ -143,15 +145,24 @@ public class Empleado {
 	}
 		
 	
-	public void setDNI(String dNI) {
+	public void setDNI(String dNI) throws OperacionNoValidaException {
+		if (dNI == null || dNI.isEmpty()) {
+			throw new OperacionNoValidaException("Nombre no puede ser nulo o vacio");
+		}
 		DNI = dNI;
 	}
 
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre) throws OperacionNoValidaException {
+		if (nombre == null || nombre.isEmpty()) {
+			throw new OperacionNoValidaException("Nombre no puede ser nulo o vacio");
+		}
 		this.nombre = nombre;
 	}
 	
-	public void setFechaContratacion(LocalDate fechaContratacion) {
+	public void setFechaContratacion(LocalDate fechaContratacion) throws OperacionNoValidaException {
+		if (fechaContratacion == null || fechaContratacion.isAfter(LocalDate.now())) {
+			throw new OperacionNoValidaException("Fecha de contratacion no puede ser nula o posterior a la actual");
+		}
 		this.fechaContratacion = fechaContratacion;
 	}
 	
@@ -159,7 +170,10 @@ public class Empleado {
 		this.baja = baja;
 	}
 
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(Categoria categoria) throws OperacionNoValidaException {
+		if (categoria == null) {
+			throw new OperacionNoValidaException("Categoria no puede ser nulo");
+		}
 		this.categoria = categoria;
 	}
 	

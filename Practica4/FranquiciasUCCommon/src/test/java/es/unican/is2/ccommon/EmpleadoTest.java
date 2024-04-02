@@ -5,16 +5,22 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.beans.Transient;
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class EmpleadoTest {
-
+	
+	private Empleado sut;
+	
+	@BeforeEach
+	public void setUp() throws OperacionNoValidaException {
+		sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.now());
+	}
+	
 	@Test
-	public void testConstructor() {
+	public void testConstructorYGetYSet() throws OperacionNoValidaException {
 		
 		// Casos de prueba válidos
-		Empleado sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.now());
-		
 		assertEquals("abuga", sut.getDNI());
 		assertEquals("nano", sut.getNombre());
 		assertEquals(Categoria.ENCARGADO, sut.getCategoria());
@@ -35,7 +41,8 @@ public class EmpleadoTest {
 		assertEquals(LocalDate.now(), sut.getFechaContratacion());
 		assertEquals(false, sut.getBaja());
 		
-		// Casos de prueba no válidos
+		/*
+		 * Casos de prueba no válidos INICIALES
 		sut = new Empleado(null, "nano", Categoria.AUXILIAR, LocalDate.now());
 		assertEquals(null, sut.getDNI());
 		sut.setDNI("");
@@ -53,14 +60,36 @@ public class EmpleadoTest {
 		assertEquals(null, sut.getFechaContratacion());
 		sut.setFechaContratacion(LocalDate.of(2024, 12, 12));
 		assertEquals(LocalDate.of(2024, 12, 12), sut.getFechaContratacion());
+		 * */
 		
+		// Casos de prueba no válidos CLASE CORREGIDA
+        sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.now());
+		assertThrows(OperacionNoValidaException.class, ()-> new Empleado(null, "nano", Categoria.AUXILIAR, LocalDate.now()));
+		assertThrows(OperacionNoValidaException.class, ()-> new Empleado("", "nano", Categoria.AUXILIAR, LocalDate.now()));
+		assertThrows(OperacionNoValidaException.class, ()-> sut.setDNI(null));
+		assertThrows(OperacionNoValidaException.class, ()-> sut.setDNI(""));
+		
+		
+		assertThrows(OperacionNoValidaException.class, ()-> new Empleado("abuga", null, Categoria.AUXILIAR, LocalDate.now()));
+		assertThrows(OperacionNoValidaException.class, ()-> new Empleado("abuga", "", Categoria.AUXILIAR, LocalDate.now()));
+		assertThrows(OperacionNoValidaException.class, ()-> sut.setDNI(null));
+		assertThrows(OperacionNoValidaException.class, ()-> sut.setNombre(""));
+		
+		assertThrows(OperacionNoValidaException.class, ()-> new Empleado("abuga", "nano", null, LocalDate.now()));
+		assertThrows(OperacionNoValidaException.class, ()-> sut.setCategoria(null));
+
+		
+		assertThrows(OperacionNoValidaException.class, ()-> new Empleado("abuga", "nano", Categoria.AUXILIAR, null));
+		assertThrows(OperacionNoValidaException.class, ()-> new Empleado("abuga", "nano", Categoria.AUXILIAR, LocalDate.of(2024, 12, 12)));
+		assertThrows(OperacionNoValidaException.class, ()-> sut.setFechaContratacion(null));
+		assertThrows(OperacionNoValidaException.class, ()-> sut.setFechaContratacion(LocalDate.of(2024, 12, 12)));
 		
 	}
 	
 	@Test
-	public void testSueldoBruto() {
+	public void testSueldoBruto() throws OperacionNoValidaException {
 		// Casos de prueba válidos
-		Empleado sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.of(2024, 3, 14));
+		sut.setFechaContratacion(LocalDate.of(2024, 3, 14));
 		sut.setBaja(true);
 		assertEquals(1500, sut.sueldoBruto());
 		
@@ -84,9 +113,8 @@ public class EmpleadoTest {
 	}
 
 	@Test
-	public void testDarDeBaja() {
+	public void testDarDeBaja() throws OperacionNoValidaException {
 		// Casos de prueba válidos
-		Empleado sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.of(2024, 3, 14));
 		sut.setBaja(true);
 		sut.darDeBaja();
 		assertEquals(true, sut.getBaja());
@@ -97,9 +125,8 @@ public class EmpleadoTest {
 	}
 
 	@Test
-	public void testDarDeAlta() {
+	public void testDarDeAlta() throws OperacionNoValidaException {
 		// Casos de prueba válidos
-		Empleado sut = new Empleado("abuga", "nano", Categoria.ENCARGADO, LocalDate.of(2024, 3, 14));
 		sut.setBaja(true);
 		sut.darDeAlta();
 		assertEquals(false, sut.getBaja());
