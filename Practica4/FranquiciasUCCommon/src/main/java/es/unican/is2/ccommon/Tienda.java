@@ -23,11 +23,17 @@ public class Tienda implements Serializable {
 	public Tienda() {}
 	
 	/**
-	 * Constructor de tienda con nombre y direccion
+	 * Constructor de tienda con nombre y direction
 	 * @param nombre Nombre de la tienda
 	 * @param direccion Direccion de la tienda
 	 */
-	public Tienda(String nombre, String direccion) {
+	public Tienda(String nombre, String direccion) throws NullPointerException, IllegalArgumentException {
+		if (nombre == null || direccion == null) {
+			throw new NullPointerException();
+		}
+		if (nombre.isEmpty() || direccion.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
 		this.nombre=nombre;
 		this.direccion= direccion;
 	}
@@ -52,7 +58,14 @@ public class Tienda implements Serializable {
 	 * @return Empleado con ese dni
 	 *         null si no existe
 	 */
-	public Empleado buscaEmpleado(String dni) {
+	public Empleado buscaEmpleado(String dni) throws NullPointerException{
+		if (dni == null) {
+			throw new NullPointerException();
+		}
+		if (dni == "") {
+			throw new IllegalArgumentException();
+		}
+		
 		for (Empleado e : empleados) {
 			if (e.getDNI().equals(dni)) {
 				return e;

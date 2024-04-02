@@ -27,11 +27,6 @@ public class Empleado {
 	 * @throws OperacionNoValidaException 
 	 */
 	public Empleado(String DNI, String nombre, Categoria categoria, LocalDate fechaContratacion) throws OperacionNoValidaException {
-		this.nombre = nombre;
-		this.DNI=DNI;
-		this.categoria=categoria;
-		this.fechaContratacion=fechaContratacion;
-
 		if (DNI == null || DNI.isEmpty()) {
 			throw new OperacionNoValidaException("DNI no puede ser nulo o vacio");
 		}
@@ -47,6 +42,11 @@ public class Empleado {
 		if (fechaContratacion == null || fechaContratacion.isAfter(LocalDate.now())) {
 			throw new OperacionNoValidaException("Fecha de contratacion no puede ser nula o posterior a la actual");
 		}
+		
+		this.nombre = nombre;
+		this.DNI=DNI;
+		this.categoria=categoria;
+		this.fechaContratacion=fechaContratacion;
 
 	}
 	
