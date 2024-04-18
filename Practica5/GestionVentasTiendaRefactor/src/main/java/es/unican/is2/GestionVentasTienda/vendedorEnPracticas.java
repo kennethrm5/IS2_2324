@@ -24,4 +24,16 @@ public class vendedorEnPracticas extends Vendedor {
 		vendedorEnPracticas v = (vendedorEnPracticas) obj;
 		return (v.getId().equals(getId()) && v.getDni().equals(getDni()));
 	}
+	
+	/**
+	 * Anhade una nueva venta al vendedor
+	 * @param importe de la venta
+	 */
+	@Override
+	public void anhade(double importe)  { // WMC +1
+		
+		this.setTotalVentas(this.getTotalVentas() + importe);
+		this.setComision(0);
+	}
+	
 }
