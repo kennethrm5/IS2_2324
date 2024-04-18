@@ -5,6 +5,6 @@ package es.unican.is2.GestionVentasTienda;
  * que existen en la tienda
  *
  */
-public enum TipoVendedor {
+public enum TipoVendedor { // WMC +1
 	Junior, Senior
 }
