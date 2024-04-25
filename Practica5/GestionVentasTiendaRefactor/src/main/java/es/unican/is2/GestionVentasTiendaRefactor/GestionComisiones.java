@@ -1,4 +1,4 @@
-package es.unican.is2.GestionVentasTienda;
+package es.unican.is2.GestionVentasTiendaRefactor;
 
 import java.util.Collections;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package es.unican.is2.GestionVentasTienda;
+package es.unican.is2.GestionVentasTiendaRefactor;
 
 /**
  * Enumerado que define los dos tipos de vendedores en plantilla

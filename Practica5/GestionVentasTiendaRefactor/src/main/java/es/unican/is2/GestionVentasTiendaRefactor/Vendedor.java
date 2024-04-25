@@ -1,4 +1,4 @@
-package es.unican.is2.GestionVentasTienda;
+package es.unican.is2.GestionVentasTiendaRefactor;
 /**
  * Vendedor de la tienda. 
  * Por cada vendedor se almacenan sus datos personales 

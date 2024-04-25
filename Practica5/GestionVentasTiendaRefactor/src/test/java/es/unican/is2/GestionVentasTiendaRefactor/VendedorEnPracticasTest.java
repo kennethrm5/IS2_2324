@@ -1,4 +1,4 @@
-package es.unican.is2.GestionVentasTienda;
+package es.unican.is2.GestionVentasTiendaRefactor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import es.unican.is2.GestionVentasTienda.vendedorEnPracticas;
 
 
 public class VendedorEnPracticasTest {
@@ -25,7 +23,7 @@ public class VendedorEnPracticasTest {
 		assertEquals(sut.getNombre(), "Ana");
 		assertEquals(sut.getDni(), "11111111A");
 		assertEquals(0.0, sut.getTotalVentas());
-		assertEquals(0.0, sut.getC());
+		assertEquals(0.0, sut.getComision());
 	}
 	
 	@Test
@@ -42,14 +40,14 @@ public class VendedorEnPracticasTest {
 	
 	@Test
 	public void testSetC() {
-		sut.setC(100);
-		assertTrue(sut.getC()==100.0);
+		sut.setComision(100);
+		assertTrue(sut.getComision()==100.0);
 		
-		sut.setC(230);
-		assertTrue(sut.getC()==230.0);
+		sut.setComision(230);
+		assertTrue(sut.getComision()==230.0);
 		
-		sut.setC(0);
-		assertTrue(sut.getC()==0.0);
+		sut.setComision(0);
+		assertTrue(sut.getComision()==0.0);
 	}
 
 	@Test

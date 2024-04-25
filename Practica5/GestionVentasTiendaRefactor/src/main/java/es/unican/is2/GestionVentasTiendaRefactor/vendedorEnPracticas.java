@@ -1,4 +1,4 @@
-package es.unican.is2.GestionVentasTienda;
+package es.unican.is2.GestionVentasTiendaRefactor;
 public class vendedorEnPracticas extends Vendedor {
 	
 	private String dni;

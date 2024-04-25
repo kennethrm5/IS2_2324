@@ -1,13 +1,9 @@
-package es.unican.is2.GestionVentasTienda;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+package es.unican.is2.GestionVentasTiendaRefactor;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
 
 /**
  * Clase que representa una tienda con un conjunto de vendedores. Gestiona las

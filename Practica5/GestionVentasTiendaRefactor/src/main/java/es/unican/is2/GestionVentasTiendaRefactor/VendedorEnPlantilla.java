@@ -1,4 +1,4 @@
-package es.unican.is2.GestionVentasTienda;
+package es.unican.is2.GestionVentasTiendaRefactor;
 public class VendedorEnPlantilla extends Vendedor {
 	
 	private TipoVendedor tipo;

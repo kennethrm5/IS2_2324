@@ -1,4 +1,4 @@
-package es.unican.is2.GestionVentasTienda;
+package es.unican.is2.GestionVentasTiendaRefactor;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,9 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import es.unican.is2.GestionVentasTienda.TipoVendedor;
-import es.unican.is2.GestionVentasTienda.VendedorEnPlantilla;
 
 
 
@@ -31,7 +28,7 @@ public class VendedorEnPlantillaTest {
 		assertEquals(sutJunior.dni(), "11111111A");
 		assertEquals(sutJunior.getNombre(), "Ana");
 		assertTrue(sutJunior.getTotalVentas()==0.0);
-		assertTrue(sutJunior.getC()==0.0);
+		assertTrue(sutJunior.getComision()==0.0);
 		assertEquals(sutJunior.tipo(), TipoVendedor.Junior);
 		assertEquals(sutSenior.tipo(), TipoVendedor.Senior);
 		
@@ -78,19 +75,19 @@ public class VendedorEnPlantillaTest {
 	@Test
 	public void testSetComision() {
 		
-		sutJunior.setC(2000);
-		assertEquals(sutJunior.getC(), 2000, 0);	
-		sutJunior.setC(4000);
-		assertEquals(sutJunior.getC(), 4000, 0);	
-		sutJunior.setC(0);
-		assertEquals(sutJunior.getC(), 0, 0);
+		sutJunior.setComision(2000);
+		assertEquals(sutJunior.getComision(), 2000, 0);	
+		sutJunior.setComision(4000);
+		assertEquals(sutJunior.getComision(), 4000, 0);	
+		sutJunior.setComision(0);
+		assertEquals(sutJunior.getComision(), 0, 0);
 		
-		sutSenior.setC(4500);
-		assertEquals(sutSenior.getC(), 4500, 0);		
-		sutSenior.setC(4000);
-		assertEquals(sutSenior.getC(), 4000, 0);
-		sutJunior.setC(0);
-		assertEquals(sutJunior.getC(), 0, 0);	
+		sutSenior.setComision(4500);
+		assertEquals(sutSenior.getComision(), 4500, 0);		
+		sutSenior.setComision(4000);
+		assertEquals(sutSenior.getComision(), 4000, 0);
+		sutJunior.setComision(0);
+		assertEquals(sutJunior.getComision(), 0, 0);	
 		
 	}
 
