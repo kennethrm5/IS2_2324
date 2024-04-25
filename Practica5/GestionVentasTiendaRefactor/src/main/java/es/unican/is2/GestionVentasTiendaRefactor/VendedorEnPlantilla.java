@@ -42,13 +42,13 @@ public class VendedorEnPlantilla extends Vendedor {
 	public void anhade(double importe)  { // WMC +1
 		
 		
-		this.setTotalVentas(this.getTotalVentas() + importe);
+		this.setTotalVentas(this.getTotalVentas() + importe); // CBO +1(Vendedor)
 		
 		double porcentaje = 0;
 		
-		if (this.tipo == TipoVendedor.Junior) {
+		if (this.tipo == TipoVendedor.Junior) { // WMC +1 CCog +1
 			porcentaje = VendedorEnPlantilla.porcentajeJunior;
-		} else if (this.tipo == TipoVendedor.Senior) {
+		} else if (this.tipo == TipoVendedor.Senior) { // WMC +1 CCog+1
 			porcentaje = VendedorEnPlantilla.porcentajeSenior;
 		}
 		

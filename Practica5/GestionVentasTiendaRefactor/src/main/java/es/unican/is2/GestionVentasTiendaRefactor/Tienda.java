@@ -53,19 +53,19 @@ public class Tienda {
 	 *         false si ya existe el vendedor
 	 */
 	public boolean anhade(Vendedor nuevo) throws DataAccessException { // WMC +1 CBO +1
-		Vendedor v = buscaVendedor(nuevo.getId());
+		Vendedor v = buscaVendedor(nuevo.getId()); // CBO +1 (Vendedor)
 		if (v != null) { // WMC +1 CCog +1
 			return false;
 		}
 		this.lista.add(nuevo);
 		
-		if (nuevo instanceof vendedorEnPracticas) {
+		if (nuevo instanceof vendedorEnPracticas) { // WMC +1 CCog +1
 			this.practicas.add(nuevo);
-		} else if (nuevo instanceof VendedorEnPlantilla) {
+		} else if (nuevo instanceof VendedorEnPlantilla) { // WMC +1 CCog +1
 			VendedorEnPlantilla vp = (VendedorEnPlantilla) nuevo;
-			if (vp.tipo().equals(TipoVendedor.Junior)) {
+			if (vp.tipo().equals(TipoVendedor.Junior)) { // WMC +1 CCog +3 CBO +1(VendedorEnPlantilla)
 				this.junior.add(vp);
-			} else {
+			} else { // WMC +1 CCog +1
 				this.senior.add(vp);
 			}
 		}
@@ -81,18 +81,18 @@ public class Tienda {
 	 */
 	public boolean eliminaVendedor(String id) throws DataAccessException { // WMC +1
 		Vendedor v = buscaVendedor(id);
-		if (v == null) {
+		if (v == null) { // WMC +1 CCog +1
 			return false;
 		}
 		lista.remove(v);
 		
-		if (v instanceof vendedorEnPracticas) {
+		if (v instanceof vendedorEnPracticas) { // WMC +1 CCog +1
 			this.practicas.remove(v);
-		} else {
+		} else { // WMC +1 CCog +1
 			VendedorEnPlantilla vp = (VendedorEnPlantilla) v;
-			if (vp.tipo().equals(TipoVendedor.Junior)) {
+			if (vp.tipo().equals(TipoVendedor.Junior)) { // WMC +1 CCog +2
 				this.junior.remove(vp);
-			} else {
+			} else { // WMC +1 CCog +1
 				this.senior.remove(vp);
 			}
 		}
@@ -127,12 +127,12 @@ public class Tienda {
 	 */
 	private Vendedor buscaVendedor(String id) throws DataAccessException {
 
-		if (id == null) {
+		if (id == null) { // WMC +1 CCog +1
 			throw new DataAccessException();
 		}
 		
 		for (Vendedor v : lista) {
-			if (v.getId().equals(id)) {
+			if (v.getId().equals(id)) { // WMC +1 CCog +1
 				return v;
 			}
 		}
@@ -202,8 +202,8 @@ public class Tienda {
 		Vendedor resultado = null;
 		double maxVentas = 0.0;
 		
-		for (Vendedor v : this.lista) {
-			if (v.getTotalVentas() > maxVentas) { // CBO +1 (Vendedor)  WMC +1  CCog +4
+		for (Vendedor v : this.lista) { // WMC +1 CCog +1
+			if (v.getTotalVentas() > maxVentas) { // WMC +1  CCog +2
 				maxVentas = v.getTotalVentas();
 				resultado = v;
 			}

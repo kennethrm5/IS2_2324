@@ -56,7 +56,7 @@ public class GestionComisiones {
 					if (!tienda.anhadeVenta(dni, importe)) { // (Tienda) CBO +1  WMC +1  CCog +3
 						mensaje("ERROR", "El vendedor no existe");
 					}
-				} catch (DataAccessException e) { // CBO +1  CCog +3
+				} catch (DataAccessException e) { // WMC +1 CBO +1  CCog +3
 					mensaje("ERROR", "No se pudo guardar el cambio");
 				}
 				break;
@@ -66,7 +66,7 @@ public class GestionComisiones {
 					msj = tienda.vendedorDelMes().getNombre();
 					mensaje("VENDEDORES DEL MES", msj);
 
-				} catch (DataAccessException e) { // CCog +3
+				} catch (DataAccessException e) { // WMC +1 CCog +3
 					mensaje("ERROR", "No se pudo acceder a los datos");
 				}
 				break;
@@ -79,7 +79,7 @@ public class GestionComisiones {
 						public int compare(Vendedor o1, Vendedor o2) {
 							if (o1.getTotalVentas() > o2.getTotalVentas()) // WMC +1  CCog +3
 								return -1;
-							else if (o1.getTotalVentas() < o2.getTotalVentas()) // WMC +1  CCog +3
+							else if (o1.getTotalVentas() < o2.getTotalVentas()) // WMC +1  CCog +1
 								return 1;
 							return 0;
 						}
@@ -89,7 +89,7 @@ public class GestionComisiones {
 						msj += vn.getNombre() + " (" + vn.getId()+ ") "+vn.getTotalVentas() + "\n";
 					}
 					mensaje("VENDEDORES", msj);
-				} catch (DataAccessException e) { // CCog +3
+				} catch (DataAccessException e) { // WMC +1 CCog +3
 					mensaje("ERROR", "No se pudo acceder a los datos");
 				}
 				break;

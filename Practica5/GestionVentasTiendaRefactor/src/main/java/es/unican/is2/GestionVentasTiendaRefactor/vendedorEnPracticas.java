@@ -32,7 +32,7 @@ public class vendedorEnPracticas extends Vendedor {
 	@Override
 	public void anhade(double importe)  { // WMC +1
 		
-		this.setTotalVentas(this.getTotalVentas() + importe);
+		this.setTotalVentas(this.getTotalVentas() + importe); // CBO +1 (Vendedor)
 		this.setComision(0);
 	}
 	
