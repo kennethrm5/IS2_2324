@@ -3,6 +3,8 @@ public class VendedorEnPlantilla extends Vendedor {
 	
 	private TipoVendedor tipo;
 	private String dni;
+	private static final double porcentajeJunior = 0.005;
+	private static final double porcentajeSenior = 0.01;
 	
 	/**
 	 * Retorna un nuevo vendedor en plantilla del tipo que se indica
@@ -45,9 +47,9 @@ public class VendedorEnPlantilla extends Vendedor {
 		double porcentaje = 0;
 		
 		if (this.tipo == TipoVendedor.Junior) {
-			porcentaje = 0.005;
+			porcentaje = VendedorEnPlantilla.porcentajeJunior;
 		} else if (this.tipo == TipoVendedor.Senior) {
-			porcentaje = 0.01;
+			porcentaje = VendedorEnPlantilla.porcentajeSenior;
 		}
 		
 		this.setComision(this.getComision() + (importe * porcentaje));

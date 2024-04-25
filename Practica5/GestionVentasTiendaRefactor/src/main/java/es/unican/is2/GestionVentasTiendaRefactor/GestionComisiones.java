@@ -2,7 +2,7 @@ package es.unican.is2.GestionVentasTiendaRefactor;
 
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.List;
 
 import fundamentos.Menu;
@@ -26,7 +26,7 @@ public class GestionComisiones {
 		Lectura lect;
 
 		List<Vendedor> vendedores;
-		List<Vendedor> resultado;
+		//List<Vendedor> resultado;
 		String msj;
 
 		// crea la tienda
@@ -63,23 +63,7 @@ public class GestionComisiones {
 
 			case VENDEDOR_DEL_MES: // WMC +1
 				try {
-					vendedores = tienda.vendedores();
-					resultado = new LinkedList<Vendedor>();
-					double maxVentas = 0.0;
-					for (Vendedor v : vendedores) { // WMC +1  CCog +3
-						if (v.getTotalVentas() > maxVentas) { // CBO +1 (Vendedor)  WMC +1  CCog +4
-							maxVentas = v.getTotalVentas();
-							resultado.clear();
-							resultado.add(v);
-						} else if (v.getTotalVentas() == maxVentas) { // WMC +1  CCog +4
-							resultado.add(v);
-						}
-					}
-
-					msj = "";
-					for (Vendedor vn : resultado) { // WMC +1  CCog +3
-						msj += vn.getNombre() + "\n";
-					}
+					msj = tienda.vendedorDelMes().getNombre();
 					mensaje("VENDEDORES DEL MES", msj);
 
 				} catch (DataAccessException e) { // CCog +3

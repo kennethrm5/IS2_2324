@@ -88,7 +88,7 @@ public class Tienda {
 		
 		if (v instanceof vendedorEnPracticas) {
 			this.practicas.remove(v);
-		} else if (v instanceof VendedorEnPlantilla) {
+		} else {
 			VendedorEnPlantilla vp = (VendedorEnPlantilla) v;
 			if (vp.tipo().equals(TipoVendedor.Junior)) {
 				this.junior.remove(vp);
@@ -125,7 +125,7 @@ public class Tienda {
 	 * @param id Id del vendedor
 	 * @return vendedor con ese dni o null si no existe ninguno
 	 */
-	public Vendedor buscaVendedor(String id) throws DataAccessException {
+	private Vendedor buscaVendedor(String id) throws DataAccessException {
 
 		if (id == null) {
 			throw new DataAccessException();
@@ -136,6 +136,7 @@ public class Tienda {
 				return v;
 			}
 		}
+		
 		return null;
 	}
 
@@ -190,6 +191,25 @@ public class Tienda {
 			if (out != null) // WMC +1 CCog +1
 				out.close();
 		}
+	}
+	
+	public Vendedor vendedorDelMes() throws DataAccessException {
+		
+		if (this.lista == null) {
+			throw new DataAccessException();
+		}
+		
+		Vendedor resultado = null;
+		double maxVentas = 0.0;
+		
+		for (Vendedor v : this.lista) {
+			if (v.getTotalVentas() > maxVentas) { // CBO +1 (Vendedor)  WMC +1  CCog +4
+				maxVentas = v.getTotalVentas();
+				resultado = v;
+			}
+		}
+		
+		return resultado;
 	}
 
 }
