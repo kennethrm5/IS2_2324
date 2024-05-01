@@ -126,7 +126,7 @@ public class Tienda {
 			in.next();
 			Vendedor ven = null;
 			// lee los vendedores senior
-			while (in.hasNext() && !in.next().equals("Junior")) { // WMC +1 CCog +2
+			while (in.hasNext() && !in.next().equals("Junior")) { // WMC +1 CCog +1
 
 				String nombre = in.next();
 				in.next();
@@ -143,7 +143,7 @@ public class Tienda {
 				lista.add(ven);
 			}
 			// lee los vendedores junior
-			while (in.hasNext() && !in.next().equals("Practicas")) { // WMC +1 CCog +2
+			while (in.hasNext() && !in.next().equals("Practicas")) { // WMC +1 CCog +1
 				String nombre = in.next();
 				in.next();
 				String idIn = in.next();
@@ -171,7 +171,7 @@ public class Tienda {
 				ven.setTotalVentas(totalVentas);
 				lista.add(ven);
 			}
-		} catch (FileNotFoundException e) { // CCog +1
+		} catch (FileNotFoundException e) { // WMC +1 CCog +1
 			throw new DataAccessException();
 		} finally {
 			if (in != null) { // WMC +1 CCog +1
@@ -207,7 +207,7 @@ public class Tienda {
 			Vendedor ven = null;
 			// lee los vendedores senior
 			// lee los vendedores senior
-			while (in.hasNext() && !in.next().equals("Junior")) { // WMC +1 CCog +2
+			while (in.hasNext() && !in.next().equals("Junior")) { // WMC +1 CCog +1
 				String nombre = in.next();
 				in.next();
 				String idIn = in.next();
@@ -223,7 +223,7 @@ public class Tienda {
 				lista.add(ven);
 			}
 			// lee los vendedores junior
-			while (in.hasNext() && !in.next().equals("Practicas")) { // WMC +1 CCog +2
+			while (in.hasNext() && !in.next().equals("Practicas")) { // WMC +1 CCog +1
 				String nombre = in.next();
 				in.next();
 				String idIn = in.next();
@@ -251,7 +251,7 @@ public class Tienda {
 				ven.setTotalVentas(totalVentas);
 				lista.add(ven);
 			}
-		} catch (FileNotFoundException e) { // CCog +1
+		} catch (FileNotFoundException e) { // WMC +1 CCog +1
 			throw new DataAccessException();
 		} finally {
 			if (in != null) { // WMC +1 CCog +1
@@ -276,11 +276,11 @@ public class Tienda {
 		for (Vendedor v : lista) { // WMC +1 CCog +1
 			if (v instanceof vendedorEnPracticas) { // WMC +1 CCog +2
 				practicas.add(v);
-			} else if (v instanceof VendedorEnPlantilla) { // WMC +1 CCog +2
+			} else if (v instanceof VendedorEnPlantilla) { // WMC +1 CCog +1
 				VendedorEnPlantilla vp = (VendedorEnPlantilla) v;
 				if (vp.tipo().equals(TipoVendedor.Junior)) // WMC +1 CCog +3
 					junior.add(vp);
-				else // WMC +1 CCog +3
+				else // WMC +1 CCog +1
 					senior.add(vp);
 			}
 		}
@@ -312,7 +312,7 @@ public class Tienda {
 				out.println("  Nombre: " + v3.getNombre() + " Id: " + v3.getId() + " DNI: " + v3.getDni()
 						+ " TotalVentasMes: " + v3.getTotalVentas());
 			}
-		} catch (IOException e) { // CCog +1
+		} catch (IOException e) { // WMC +1 CCog +1
 			throw new DataAccessException();
 
 		} finally {
